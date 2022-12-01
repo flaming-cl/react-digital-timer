@@ -3,10 +3,14 @@
 ![](https://user-images.githubusercontent.com/51183663/204952551-805d512f-a54e-440e-9e6d-49adeec6fc55.png)
 
 A React digital timer supports keyboard/button control.
-- set up count down: type in time to count down in the timer frame
-- start the timer: click on the Play button, or press Enter
-- pause the timer: click on the Pause button, or press Enter
-- reset the timer: click on the Reset button, or press ctrl/command + Enter
+#### set up count down
+type in time to count down in the timer frame
+#### start the timer
+click on the Play button, or press Enter
+#### pause the timer
+click on the Pause button, or press Enter
+#### reset the timer
+click on the Reset button, or press ctrl/command + Enter
 
 ## Installation
 
@@ -20,6 +24,36 @@ npm i react-digital-timer
 
 ```javascript
 import { Timer } from 'react-digital-timer';
+```
+
+### Example
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Timer } from '../dist';
+import './App.css';
+
+const INIT_TIME = {
+    hour: 0,
+    minute: 0,
+    second: 624
+}
+
+function App() {
+    return (
+        <div className="App">
+            <header className="App-header">
+                <p className="App-message">Digital Timer</p>
+                <Timer
+                    countDownTime={INIT_TIME}
+                    onComplete={() => console.log('time\'s up')}
+                />
+            </header>
+        </div>
+    );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
 ## Config Params

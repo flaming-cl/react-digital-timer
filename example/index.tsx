@@ -1,6 +1,6 @@
 import 'react-app-polyfill/ie11';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Timer } from '../dist';
 import './App.css';
 
@@ -17,7 +17,6 @@ function App() {
         <p className="App-message">Digital Timer</p>
         <Timer
           countDownTime={INIT_TIME}
-          showTimeUpMessage={false}
           onComplete={() => console.log('time\'s up')}
         />
       </header>
