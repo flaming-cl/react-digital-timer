@@ -4711,7 +4711,7 @@ require('core-js/features/symbol'); // Support iterable spread (...Set, ...Map)
 
 
 require('core-js/features/array/from');
-},{"promise/lib/rejection-tracking":"node_modules/promise/lib/rejection-tracking.js","promise/lib/es6-extensions.js":"node_modules/promise/lib/es6-extensions.js","whatwg-fetch":"node_modules/whatwg-fetch/fetch.js","object-assign":"node_modules/object-assign/index.js","core-js/features/symbol":"node_modules/react-app-polyfill/node_modules/core-js/features/symbol/index.js","core-js/features/array/from":"node_modules/react-app-polyfill/node_modules/core-js/features/array/from.js"}],"../node_modules/react/cjs/react.development.js":[function(require,module,exports) {
+},{"promise/lib/rejection-tracking":"node_modules/promise/lib/rejection-tracking.js","promise/lib/es6-extensions.js":"node_modules/promise/lib/es6-extensions.js","whatwg-fetch":"node_modules/whatwg-fetch/fetch.js","object-assign":"node_modules/object-assign/index.js","core-js/features/symbol":"node_modules/react-app-polyfill/node_modules/core-js/features/symbol/index.js","core-js/features/array/from":"node_modules/react-app-polyfill/node_modules/core-js/features/array/from.js"}],"node_modules/react/cjs/react.development.js":[function(require,module,exports) {
 /**
  * @license React
  * react.development.js
@@ -7388,7 +7388,7 @@ if ("development" !== "production") {
     }
   })();
 }
-},{}],"../node_modules/react/index.js":[function(require,module,exports) {
+},{}],"node_modules/react/index.js":[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -7396,7 +7396,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react.development.js');
 }
-},{"./cjs/react.development.js":"../node_modules/react/cjs/react.development.js"}],"../node_modules/scheduler/cjs/scheduler.development.js":[function(require,module,exports) {
+},{"./cjs/react.development.js":"node_modules/react/cjs/react.development.js"}],"node_modules/scheduler/cjs/scheduler.development.js":[function(require,module,exports) {
 /**
  * @license React
  * scheduler.development.js
@@ -8012,7 +8012,7 @@ if ("development" !== "production") {
     }
   })();
 }
-},{}],"../node_modules/scheduler/index.js":[function(require,module,exports) {
+},{}],"node_modules/scheduler/index.js":[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -8020,7 +8020,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/scheduler.development.js');
 }
-},{"./cjs/scheduler.development.js":"../node_modules/scheduler/cjs/scheduler.development.js"}],"../node_modules/react-dom/cjs/react-dom.development.js":[function(require,module,exports) {
+},{"./cjs/scheduler.development.js":"node_modules/scheduler/cjs/scheduler.development.js"}],"node_modules/react-dom/cjs/react-dom.development.js":[function(require,module,exports) {
 /**
  * @license React
  * react-dom.development.js
@@ -37632,7 +37632,7 @@ if ("development" !== "production") {
     }
   })();
 }
-},{"react":"../node_modules/react/index.js","scheduler":"../node_modules/scheduler/index.js"}],"../node_modules/react-dom/profiling.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","scheduler":"node_modules/scheduler/index.js"}],"node_modules/react-dom/index.js":[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -37666,11 +37666,42 @@ if ("development" === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = require('./cjs/react-dom.profiling.min.js');
+  module.exports = require('./cjs/react-dom.production.min.js');
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../node_modules/classnames/index.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"node_modules/react-dom/client.js":[function(require,module,exports) {
+'use strict';
+
+var m = require('react-dom');
+
+if ("development" === 'production') {
+  exports.createRoot = m.createRoot;
+  exports.hydrateRoot = m.hydrateRoot;
+} else {
+  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+
+  exports.createRoot = function (c, o) {
+    i.usingClientEntryPoint = true;
+
+    try {
+      return m.createRoot(c, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+
+  exports.hydrateRoot = function (c, h, o) {
+    i.usingClientEntryPoint = true;
+
+    try {
+      return m.hydrateRoot(c, h, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+}
+},{"react-dom":"node_modules/react-dom/index.js"}],"../node_modules/classnames/index.js":[function(require,module,exports) {
 var define;
 /*!
 	Copyright (c) 2018 Jed Watson.
@@ -38643,7 +38674,7 @@ var Timer = function Timer(props) {
 };
 
 exports.Timer = Timer;
-},{"react":"../node_modules/react/index.js","classnames":"../node_modules/classnames/index.js"}],"node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","classnames":"../node_modules/classnames/index.js"}],"node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -38760,12 +38791,13 @@ require("react-app-polyfill/ie11");
 
 var React = __importStar(require("react"));
 
-var ReactDOM = __importStar(require("react-dom"));
+var client_1 = require("react-dom/client");
 
 var react_digital_timer_1 = require("react-digital-timer");
 
 require("./App.css");
 
+var container = document.getElementById('root');
 var INIT_TIME = {
   hour: 0,
   minute: 0,
@@ -38787,8 +38819,9 @@ function App() {
   })));
 }
 
-ReactDOM.render(React.createElement(App, null), document.getElementById('root'));
-},{"react-app-polyfill/ie11":"node_modules/react-app-polyfill/ie11.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/profiling.js","react-digital-timer":"node_modules/react-digital-timer/dist/react-digital-timer.esm.js","./App.css":"App.css"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var root = client_1.createRoot(container);
+root.render(React.createElement(App, null));
+},{"react-app-polyfill/ie11":"node_modules/react-app-polyfill/ie11.js","react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","react-digital-timer":"node_modules/react-digital-timer/dist/react-digital-timer.esm.js","./App.css":"App.css"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -38816,7 +38849,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57642" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59547" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
