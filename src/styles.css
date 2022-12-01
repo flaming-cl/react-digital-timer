@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'DIGIT';
+  src: url(assets/digit.woff2) format('woff2');
+}
+
+::placeholder {
+  color: #000000;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  color: #000000;
+}
+
+::-ms-input-placeholder {
+  color: #000000;
+}
+
+.hide {
+  display: none;
+}
+
+.timer {
+  margin-left: 2px;
+  box-sizing: border-box;
+  font-size: 10px;
+  display: flex;
+  direction: ltr;
+}
+
+.timer-btn {
+  height: 3vw;
+  width: 3vw;
+  margin: 1px 8px 0 0;
+  cursor: pointer;
+}
+
+.timer-form {
+  display: flex;
+  width: max-content;
+  border: 3px solid white;
+  background: white;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.8vw;
+}
+
+.digits {
+  font-family: 'DIGIT';
+  outline: none;
+  font-size: 3vw;
+  border: none;
+  color: black;
+  width: 3vw;
+  text-align: center;
+  margin-top: 1px;
+  background: none;
+}
+
+.hide-show-btn {
+  cursor: pointer;
+  padding: 4px 6px;
+  width: 11px;
+  height: 11px;
+  margin: 3px 3px;
+}
+
+.hide-show-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
